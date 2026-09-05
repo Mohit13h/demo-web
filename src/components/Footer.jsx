@@ -11,17 +11,18 @@ export const Footer = () => {
       borderTop: '1px solid rgba(255, 255, 255, 0.08)',
       color: '#94a3b8',
       fontSize: '0.9rem',
-      paddingTop: '4.5rem',
-      paddingBottom: '5.5rem' /* room for mobile bottom bar */
+      paddingTop: '3.5rem',
+      paddingBottom: '6.5rem' /* extra room for mobile bottom bar */
     }}>
       <div className="container">
         
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '3rem',
-          marginBottom: '3.5rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '2.5rem',
+          marginBottom: '3rem'
         }}>
+
           
           {/* Column 1: Brand & Philosophy */}
           <div>

@@ -95,52 +95,53 @@ export const ReviewsSection = () => {
           backgroundColor: '#0f172a',
           border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '16px',
-          padding: '1.75rem 2rem',
-          marginBottom: '2.5rem',
+          padding: 'clamp(1.15rem, 3vw, 1.75rem)',
+          marginBottom: '2rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: '1.5rem',
+          gap: '1.25rem',
           boxShadow: 'var(--shadow-sm)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             {/* Google Logo Icon badge */}
             <div style={{
-              width: '54px',
-              height: '54px',
+              width: '48px',
+              height: '48px',
               borderRadius: '12px',
               backgroundColor: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontWeight: 800,
-              fontSize: '1.6rem',
+              fontSize: '1.45rem',
               color: '#4285F4',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              flexShrink: 0
             }}>
               G
             </div>
 
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
-                <span style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff', lineHeight: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.15rem' }}>
+                <span style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', lineHeight: 1 }}>
                   {businessInfo.googleRating}
                 </span>
                 <div style={{ display: 'flex', gap: '2px' }}>
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={18} fill="#fbbf24" color="#fbbf24" />
+                    <Star key={i} size={16} fill="#fbbf24" color="#fbbf24" />
                   ))}
                 </div>
               </div>
-              <span style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+              <span style={{ fontSize: '0.825rem', color: '#94a3b8' }}>
                 Based on <strong>{businessInfo.reviewCount} verified Google Reviews</strong> in {businessInfo.city}
               </span>
             </div>
           </div>
 
-          {/* Filter Pills */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          {/* Horizontally Scrollable Filter Pills */}
+          <div className="horizontal-scroll-container" style={{ width: '100%', maxWidth: '100%' }}>
             {[
               { id: 'all', label: 'All Reviews' },
               { id: 'brakes', label: 'Brakes' },
@@ -152,15 +153,16 @@ export const ReviewsSection = () => {
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 style={{
-                  padding: '0.45rem 0.9rem',
+                  padding: '0.4rem 0.85rem',
                   borderRadius: '8px',
-                  fontSize: '0.8rem',
+                  fontSize: '0.775rem',
                   fontWeight: 600,
                   cursor: 'pointer',
                   border: activeCategory === cat.id ? '1px solid #f59e0b' : '1px solid rgba(255, 255, 255, 0.1)',
                   backgroundColor: activeCategory === cat.id ? 'rgba(245, 158, 11, 0.15)' : 'rgba(255, 255, 255, 0.04)',
                   color: activeCategory === cat.id ? '#f59e0b' : '#cbd5e1',
-                  transition: 'all 0.15s ease'
+                  transition: 'all 0.15s ease',
+                  flexShrink: 0
                 }}
               >
                 {cat.label}
@@ -168,6 +170,7 @@ export const ReviewsSection = () => {
             ))}
           </div>
         </div>
+
 
         {/* Reviews Grid */}
         <div className="grid-3">

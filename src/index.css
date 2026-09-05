@@ -114,8 +114,15 @@ img {
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .section-spacing {
@@ -126,8 +133,15 @@ img {
 
 @media (max-width: 768px) {
   .section-spacing {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-spacing {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
   }
 }
 
@@ -136,6 +150,12 @@ img {
   text-align: center;
   max-width: 760px;
   margin: 0 auto 3.5rem auto;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
 }
 
 .section-eyebrow {
@@ -155,10 +175,11 @@ img {
 }
 
 .section-title {
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   font-weight: 800;
   margin-bottom: 1rem;
   color: var(--text-pure);
+  line-height: 1.2;
 }
 
 .section-title span.highlight {
@@ -168,7 +189,7 @@ img {
 }
 
 .section-description {
-  font-size: 1.0625rem;
+  font-size: clamp(0.95rem, 2vw, 1.0625rem);
   color: var(--text-muted);
   line-height: 1.65;
 }
@@ -191,6 +212,15 @@ img {
   border: none;
   text-decoration: none;
   white-space: nowrap;
+  touch-action: manipulation;
+  min-height: 44px; /* Apple/Android recommended minimum tap target */
+}
+
+@media (max-width: 640px) {
+  .mobile-btn-full {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 }
 
 .btn-primary {
@@ -241,11 +271,19 @@ img {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   border-radius: 6px;
+  min-height: 38px;
 }
 
 .btn-lg {
   padding: 1.05rem 2.2rem;
   font-size: 1.1rem;
+}
+
+@media (max-width: 640px) {
+  .btn-lg {
+    padding: 0.875rem 1.4rem;
+    font-size: 0.975rem;
+  }
 }
 
 /* ==========================================================
@@ -259,6 +297,13 @@ img {
   border-radius: 14px;
   padding: 1.75rem;
   transition: all var(--transition-smooth);
+}
+
+@media (max-width: 640px) {
+  .card-glass {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
 }
 
 .card-glass:hover {
@@ -286,6 +331,7 @@ img {
   border-radius: 50%;
   display: inline-block;
   position: relative;
+  flex-shrink: 0;
 }
 
 .pulse-dot::after {
@@ -339,7 +385,7 @@ img {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(4, 7, 13, 0.82);
+  background: rgba(4, 7, 13, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
@@ -348,6 +394,13 @@ img {
   justify-content: center;
   padding: 1rem;
   animation: fadeIn 0.2s ease-out;
+}
+
+@media (max-width: 640px) {
+  .modal-backdrop {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
 }
 
 .modal-content {
@@ -361,6 +414,44 @@ img {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
   position: relative;
   animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    max-height: 92vh;
+    padding: 1.25rem !important;
+  }
+}
+
+/* Mobile Input Zoom Prevention (iOS zooms in on inputs with font-size < 16px) */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Custom Scrollbar for horizontal filter pills */
+.horizontal-scroll-container {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.35rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 @keyframes fadeIn {
@@ -388,3 +479,4 @@ img {
     scroll-behavior: auto !important;
   }
 }
+

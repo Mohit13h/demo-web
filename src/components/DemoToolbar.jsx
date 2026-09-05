@@ -19,10 +19,9 @@ export const DemoToolbar = () => {
       <button
         onClick={() => setIsMinimized(false)}
         title="Open Prospect Demo Customizer"
+        className="demo-floating-trigger"
         style={{
           position: 'fixed',
-          bottom: '80px',
-          right: '20px',
           zIndex: 90,
           background: 'var(--accent-gradient)',
           border: '2px solid rgba(255,255,255,0.2)',
@@ -46,10 +45,8 @@ export const DemoToolbar = () => {
     <>
       {/* Floating Pill Trigger */}
       {!isPersonalizerOpen && (
-        <div style={{
+        <div className="demo-floating-trigger" style={{
           position: 'fixed',
-          bottom: '80px',
-          right: '20px',
           zIndex: 90,
           display: 'flex',
           alignItems: 'center',
@@ -65,16 +62,16 @@ export const DemoToolbar = () => {
               background: '#0f172a',
               border: '1px solid #f59e0b',
               color: '#ffffff',
-              padding: '0.6rem 1rem',
+              padding: '0.55rem 0.95rem',
               borderRadius: '9999px',
               fontWeight: 700,
-              fontSize: '0.85rem',
+              fontSize: '0.8rem',
               cursor: 'pointer',
               boxShadow: '0 8px 30px rgba(0, 0, 0, 0.6)'
             }}
           >
-            <Sparkles size={16} color="#f59e0b" />
-            <span>Customize Demo for Prospect</span>
+            <Sparkles size={15} color="#f59e0b" />
+            <span>Customize Demo</span>
           </button>
 
           <button
@@ -101,28 +98,23 @@ export const DemoToolbar = () => {
       {/* Slide-out Customizer Drawer */}
       {isPersonalizerOpen && (
         <div
+          className="demo-drawer-content"
           style={{
             position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            width: '90%',
-            maxWidth: '380px',
-            maxHeight: '85vh',
-            overflowY: 'auto',
             backgroundColor: '#0f172a',
             border: '2px solid rgba(245, 158, 11, 0.4)',
             borderRadius: '16px',
-            padding: '1.5rem',
+            padding: '1.25rem',
             zIndex: 100,
             boxShadow: '0 20px 60px rgba(0, 0, 0, 0.9)',
             animation: 'slideUp 0.25s ease'
           }}
         >
           {/* Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Sparkles size={18} color="#f59e0b" />
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#ffffff' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff' }}>
                 Pitch Demo Customizer
               </h3>
             </div>
@@ -145,13 +137,13 @@ export const DemoToolbar = () => {
             </button>
           </div>
 
-          <p style={{ fontSize: '0.78rem', color: '#94a3b8', lineHeight: 1.4, marginBottom: '1rem' }}>
+          <p style={{ fontSize: '0.775rem', color: '#94a3b8', lineHeight: 1.4, marginBottom: '0.875rem' }}>
             Instantly personalize this demo during client meetings to show how it looks tailored to their auto shop.
           </p>
 
           {/* Preset Buttons */}
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#f59e0b', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={{ display: 'block', fontSize: '0.725rem', fontWeight: 700, color: '#f59e0b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
               1-Click US City Presets
             </label>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
@@ -166,12 +158,12 @@ export const DemoToolbar = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      padding: '0.5rem 0.75rem',
+                      padding: '0.45rem 0.65rem',
                       borderRadius: '6px',
                       background: isActive ? 'rgba(245, 158, 11, 0.2)' : 'rgba(255, 255, 255, 0.04)',
                       border: isActive ? '1px solid #f59e0b' : '1px solid rgba(255, 255, 255, 0.08)',
                       color: isActive ? '#ffffff' : '#cbd5e1',
-                      fontSize: '0.8rem',
+                      fontSize: '0.775rem',
                       fontWeight: 600,
                       cursor: 'pointer',
                       textAlign: 'left'
@@ -186,137 +178,137 @@ export const DemoToolbar = () => {
           </div>
 
           {/* Editable Fields */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#f59e0b', textTransform: 'uppercase' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <label style={{ display: 'block', fontSize: '0.725rem', fontWeight: 700, color: '#f59e0b', textTransform: 'uppercase' }}>
               Direct Edit Prospect Info
             </label>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>Business Name</label>
+              <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>Business Name</label>
               <input
                 type="text"
                 value={businessInfo.name}
                 onChange={e => updateBusinessField('name', e.target.value)}
                 style={{
                   width: '100%',
-                  padding: '0.45rem 0.6rem',
+                  padding: '0.4rem 0.55rem',
                   background: '#090d16',
                   border: '1px solid rgba(255, 255, 255, 0.15)',
                   borderRadius: '6px',
                   color: '#ffffff',
-                  fontSize: '0.825rem'
+                  fontSize: '0.8rem'
                 }}
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.45rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>City</label>
+                <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>City</label>
                 <input
                   type="text"
                   value={businessInfo.city}
                   onChange={e => updateBusinessField('city', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.45rem 0.6rem',
+                    padding: '0.4rem 0.55rem',
                     background: '#090d16',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: '6px',
                     color: '#ffffff',
-                    fontSize: '0.825rem'
+                    fontSize: '0.8rem'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>State</label>
+                <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>State</label>
                 <input
                   type="text"
                   value={businessInfo.state}
                   onChange={e => updateBusinessField('state', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.45rem 0.6rem',
+                    padding: '0.4rem 0.55rem',
                     background: '#090d16',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: '6px',
                     color: '#ffffff',
-                    fontSize: '0.825rem'
+                    fontSize: '0.8rem'
                   }}
                 />
               </div>
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>Phone Number</label>
+              <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>Phone Number</label>
               <input
                 type="text"
                 value={businessInfo.phone}
                 onChange={e => updateBusinessField('phone', e.target.value)}
                 style={{
                   width: '100%',
-                  padding: '0.45rem 0.6rem',
+                  padding: '0.4rem 0.55rem',
                   background: '#090d16',
                   border: '1px solid rgba(255, 255, 255, 0.15)',
                   borderRadius: '6px',
                   color: '#ffffff',
-                  fontSize: '0.825rem'
+                  fontSize: '0.8rem'
                 }}
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>Google Rating</label>
+                <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>Google Rating</label>
                 <input
                   type="text"
                   value={businessInfo.googleRating}
                   onChange={e => updateBusinessField('googleRating', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.45rem 0.6rem',
+                    padding: '0.4rem 0.55rem',
                     background: '#090d16',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: '6px',
                     color: '#ffffff',
-                    fontSize: '0.825rem'
+                    fontSize: '0.8rem'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>Review Count</label>
+                <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>Review Count</label>
                 <input
                   type="text"
                   value={businessInfo.reviewCount}
                   onChange={e => updateBusinessField('reviewCount', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.45rem 0.6rem',
+                    padding: '0.4rem 0.55rem',
                     background: '#090d16',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: '6px',
                     color: '#ffffff',
-                    fontSize: '0.825rem'
+                    fontSize: '0.8rem'
                   }}
                 />
               </div>
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.2rem' }}>Street Address</label>
+              <label style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', marginBottom: '0.15rem' }}>Street Address</label>
               <input
                 type="text"
                 value={businessInfo.address}
                 onChange={e => updateBusinessField('address', e.target.value)}
                 style={{
                   width: '100%',
-                  padding: '0.45rem 0.6rem',
+                  padding: '0.4rem 0.55rem',
                   background: '#090d16',
                   border: '1px solid rgba(255, 255, 255, 0.15)',
                   borderRadius: '6px',
                   color: '#ffffff',
-                  fontSize: '0.825rem'
+                  fontSize: '0.8rem'
                 }}
               />
             </div>
@@ -325,12 +317,40 @@ export const DemoToolbar = () => {
           <button
             onClick={() => setIsPersonalizerOpen(false)}
             className="btn btn-primary"
-            style={{ width: '100%', padding: '0.65rem', marginTop: '1.25rem', fontSize: '0.85rem' }}
+            style={{ width: '100%', padding: '0.55rem', marginTop: '1rem', fontSize: '0.825rem' }}
           >
             Apply & Close
           </button>
         </div>
       )}
+
+      <style>{`
+        .demo-floating-trigger {
+          bottom: 20px;
+          right: 20px;
+        }
+        .demo-drawer-content {
+          bottom: 20px;
+          right: 20px;
+          width: 90%;
+          max-width: 380px;
+          max-height: 85vh;
+          overflow-y: auto;
+        }
+        @media (max-width: 768px) {
+          .demo-floating-trigger {
+            bottom: 76px !important;
+            right: 14px !important;
+          }
+          .demo-drawer-content {
+            bottom: 70px !important;
+            right: 5% !important;
+            width: 90% !important;
+            max-height: 80vh !important;
+          }
+        }
+      `}</style>
     </>
   );
 };
+

@@ -52,11 +52,11 @@ export const AppointmentSection = () => {
           background: 'linear-gradient(135deg, rgba(22, 32, 51, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%)',
           border: '1px solid rgba(245, 158, 11, 0.3)',
           borderRadius: '20px',
-          padding: 'clamp(2rem, 4vw, 3.5rem)',
+          padding: 'clamp(1.25rem, 3.5vw, 3.25rem)',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '3rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '2.25rem',
           alignItems: 'center'
         }}>
           
@@ -67,7 +67,7 @@ export const AppointmentSection = () => {
             </div>
 
             <h2 style={{
-              fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
+              fontSize: 'clamp(1.85rem, 4vw, 2.75rem)',
               fontWeight: 800,
               color: '#ffffff',
               lineHeight: 1.18,
@@ -76,7 +76,7 @@ export const AppointmentSection = () => {
               Need Your <span className="highlight">Car Fixed?</span>
             </h2>
 
-            <p style={{ fontSize: '1.05rem', color: '#cbd5e1', lineHeight: 1.6, marginBottom: '2rem' }}>
+            <p style={{ fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', color: '#cbd5e1', lineHeight: 1.6, marginBottom: '1.75rem' }}>
               Tell us what your vehicle needs and we’ll help you with the next step. No pressure, no obligations—just honest advice from local automotive specialists in {businessInfo.city}.
             </p>
 
@@ -85,10 +85,10 @@ export const AppointmentSection = () => {
               backgroundColor: 'rgba(255, 255, 255, 0.04)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
               borderRadius: '12px',
-              padding: '1.25rem 1.5rem',
-              marginBottom: '2rem'
+              padding: '1rem 1.25rem',
+              marginBottom: '1.75rem'
             }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700, display: 'block', marginBottom: '0.25rem' }}>
+              <span style={{ fontSize: '0.775rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700, display: 'block', marginBottom: '0.25rem' }}>
                 Prefer to speak directly with a service advisor?
               </span>
               <a
@@ -97,33 +97,33 @@ export const AppointmentSection = () => {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.6rem',
-                  fontSize: '1.35rem',
+                  gap: '0.5rem',
+                  fontSize: 'clamp(1.15rem, 3.5vw, 1.35rem)',
                   fontWeight: 800,
                   color: '#34d399',
                   textDecoration: 'none'
                 }}
               >
-                <Phone size={22} />
+                <Phone size={20} />
                 <span>{businessInfo.phone}</span>
               </a>
-              <span style={{ display: 'block', fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' }}>
+              <span style={{ display: 'block', fontSize: '0.775rem', color: '#64748b', marginTop: '0.25rem' }}>
                 Mon-Fri: 7:30 AM - 6:00 PM • Sat: 8:00 AM - 3:00 PM
               </span>
             </div>
 
             {/* Bullet guarantees */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#e2e8f0', fontSize: '0.9rem' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#e2e8f0', fontSize: '0.875rem' }}>
+                <CheckCircle2 size={17} color="#10b981" style={{ flexShrink: 0 }} />
                 <span>Honest price estimates before any repair starts</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#e2e8f0', fontSize: '0.9rem' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#e2e8f0', fontSize: '0.875rem' }}>
+                <CheckCircle2 size={17} color="#10b981" style={{ flexShrink: 0 }} />
                 <span>Backed by our {businessInfo.warranty}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#e2e8f0', fontSize: '0.9rem' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#e2e8f0', fontSize: '0.875rem' }}>
+                <CheckCircle2 size={17} color="#10b981" style={{ flexShrink: 0 }} />
                 <span>Clean, air-conditioned waiting area with Wi-Fi</span>
               </div>
             </div>
@@ -134,20 +134,20 @@ export const AppointmentSection = () => {
             backgroundColor: '#090d16',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '16px',
-            padding: '2rem'
+            padding: 'clamp(1.15rem, 3vw, 1.75rem)'
           }}>
             {!submitted ? (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.25rem' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.15rem' }}>
                   Request an Estimate
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.5rem' }}>
+                <p style={{ fontSize: '0.825rem', color: '#94a3b8', marginBottom: '0.35rem' }}>
                   Fill out this quick form and we’ll contact you promptly.
                 </p>
 
                 {/* Name */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Your Name *
                   </label>
                   <input
@@ -159,7 +159,7 @@ export const AppointmentSection = () => {
                     onChange={handleChange}
                     style={{
                       width: '100%',
-                      padding: '0.75rem 0.9rem',
+                      padding: '0.7rem 0.85rem',
                       background: '#131c2e',
                       border: '1px solid rgba(255, 255, 255, 0.15)',
                       borderRadius: '8px',
@@ -170,9 +170,9 @@ export const AppointmentSection = () => {
                 </div>
 
                 {/* Phone & Email Row */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
+                <div className="form-responsive-row">
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                       Phone Number *
                     </label>
                     <input
@@ -184,7 +184,7 @@ export const AppointmentSection = () => {
                       onChange={handleChange}
                       style={{
                         width: '100%',
-                        padding: '0.75rem 0.9rem',
+                        padding: '0.7rem 0.85rem',
                         background: '#131c2e',
                         border: '1px solid rgba(255, 255, 255, 0.15)',
                         borderRadius: '8px',
@@ -195,7 +195,7 @@ export const AppointmentSection = () => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                       Email Address
                     </label>
                     <input
@@ -206,7 +206,7 @@ export const AppointmentSection = () => {
                       onChange={handleChange}
                       style={{
                         width: '100%',
-                        padding: '0.75rem 0.9rem',
+                        padding: '0.7rem 0.85rem',
                         background: '#131c2e',
                         border: '1px solid rgba(255, 255, 255, 0.15)',
                         borderRadius: '8px',
@@ -219,7 +219,7 @@ export const AppointmentSection = () => {
 
                 {/* Vehicle Year, Make, Model */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Vehicle (Year, Make, Model) *
                   </label>
                   <input
@@ -231,7 +231,7 @@ export const AppointmentSection = () => {
                     onChange={handleChange}
                     style={{
                       width: '100%',
-                      padding: '0.75rem 0.9rem',
+                      padding: '0.7rem 0.85rem',
                       background: '#131c2e',
                       border: '1px solid rgba(255, 255, 255, 0.15)',
                       borderRadius: '8px',
@@ -242,9 +242,9 @@ export const AppointmentSection = () => {
                 </div>
 
                 {/* Service Needed & Date */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
+                <div className="form-responsive-row">
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                       Service Needed
                     </label>
                     <select
@@ -253,12 +253,12 @@ export const AppointmentSection = () => {
                       onChange={handleChange}
                       style={{
                         width: '100%',
-                        padding: '0.75rem 0.9rem',
+                        padding: '0.7rem 0.85rem',
                         background: '#131c2e',
                         border: '1px solid rgba(255, 255, 255, 0.15)',
                         borderRadius: '8px',
                         color: '#ffffff',
-                        fontSize: '0.875rem'
+                        fontSize: '0.85rem'
                       }}
                     >
                       {services.map((svc) => (
@@ -270,7 +270,7 @@ export const AppointmentSection = () => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                       Preferred Date
                     </label>
                     <input
@@ -280,12 +280,12 @@ export const AppointmentSection = () => {
                       onChange={handleChange}
                       style={{
                         width: '100%',
-                        padding: '0.75rem 0.9rem',
+                        padding: '0.7rem 0.85rem',
                         background: '#131c2e',
                         border: '1px solid rgba(255, 255, 255, 0.15)',
                         borderRadius: '8px',
                         color: '#ffffff',
-                        fontSize: '0.875rem'
+                        fontSize: '0.85rem'
                       }}
                     />
                   </div>
@@ -293,7 +293,7 @@ export const AppointmentSection = () => {
 
                 {/* Message */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Describe Vehicle Issue / Notes
                   </label>
                   <textarea
@@ -304,12 +304,12 @@ export const AppointmentSection = () => {
                     onChange={handleChange}
                     style={{
                       width: '100%',
-                      padding: '0.75rem 0.9rem',
+                      padding: '0.7rem 0.85rem',
                       background: '#131c2e',
                       border: '1px solid rgba(255, 255, 255, 0.15)',
                       borderRadius: '8px',
                       color: '#ffffff',
-                      fontSize: '0.875rem',
+                      fontSize: '0.85rem',
                       resize: 'vertical'
                     }}
                   />
@@ -321,7 +321,7 @@ export const AppointmentSection = () => {
                   id="inpage-quote-submit-btn"
                   disabled={loading}
                   className="btn btn-primary"
-                  style={{ width: '100%', padding: '0.95rem', fontSize: '1rem', marginTop: '0.5rem' }}
+                  style={{ width: '100%', padding: '0.875rem', fontSize: '0.975rem', marginTop: '0.35rem' }}
                 >
                   {loading ? 'Submitting Your Request...' : 'Request a Quote'}
                 </button>
@@ -329,8 +329,8 @@ export const AppointmentSection = () => {
             ) : (
               <div style={{ textAlign: 'center', padding: '1.5rem 0.5rem' }}>
                 <div style={{
-                  width: '60px',
-                  height: '60px',
+                  width: '56px',
+                  height: '56px',
                   borderRadius: '50%',
                   background: 'rgba(16, 185, 129, 0.15)',
                   border: '2px solid #10b981',
@@ -338,14 +338,14 @@ export const AppointmentSection = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#10b981',
-                  margin: '0 auto 1.25rem'
+                  margin: '0 auto 1rem'
                 }}>
-                  <CheckCircle2 size={32} />
+                  <CheckCircle2 size={30} />
                 </div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem' }}>
                   Quote Request Sent!
                 </h3>
-                <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: 1.55, marginBottom: '1.25rem' }}>
+                <p style={{ color: '#cbd5e1', fontSize: '0.875rem', lineHeight: 1.55, marginBottom: '1.25rem' }}>
                   Thank you! Our service team at <strong>{businessInfo.name}</strong> will contact you promptly at <strong>{formData.phone}</strong> with pricing and schedule availability.
                 </p>
                 <button
@@ -362,6 +362,20 @@ export const AppointmentSection = () => {
         </div>
 
       </div>
+
+      <style>{`
+        .form-responsive-row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
+        @media (max-width: 520px) {
+          .form-responsive-row {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   );
 };
+

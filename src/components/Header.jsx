@@ -36,10 +36,10 @@ export const Header = () => {
         height: '74px',
       }}>
         {/* Brand / Logo */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none' }}>
           <div style={{
-            width: '42px',
-            height: '42px',
+            width: '40px',
+            height: '40px',
             borderRadius: '10px',
             background: 'var(--accent-gradient)',
             display: 'flex',
@@ -55,20 +55,19 @@ export const Header = () => {
               display: 'block',
               fontFamily: 'var(--font-heading)',
               fontWeight: 800,
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 3.5vw, 1.2rem)',
               color: '#ffffff',
               letterSpacing: '-0.02em',
               lineHeight: 1.1
             }}>
               {businessInfo.name}
             </span>
-            <span style={{
-              display: 'block',
-              fontSize: '0.725rem',
+            <span className="header-subtext" style={{
+              fontSize: '0.7rem',
               fontWeight: 600,
               color: '#f59e0b',
               textTransform: 'uppercase',
-              letterSpacing: '0.06em'
+              letterSpacing: '0.05em'
             }}>
               Auto Repair & Diagnostics • {businessInfo.city}, {businessInfo.state}
             </span>
@@ -76,7 +75,7 @@ export const Header = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <nav style={{ display: 'none', '@media (min-width: 960px)': { display: 'flex' } }} className="desktop-nav">
+        <nav className="desktop-nav">
           <ul style={{
             display: 'flex',
             alignItems: 'center',
@@ -105,7 +104,7 @@ export const Header = () => {
         </nav>
 
         {/* Desktop CTA actions */}
-        <div style={{ display: 'none', '@media (min-width: 960px)': { display: 'flex' } }} className="desktop-ctas">
+        <div className="desktop-ctas">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
             {/* Direct Phone Call Button */}
             <a
@@ -133,7 +132,7 @@ export const Header = () => {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="mobile-toggle-wrapper">
+        <div className="mobile-toggle-wrapper" style={{ alignItems: 'center', gap: '0.5rem' }}>
           <a
             href={`tel:${businessInfo.phoneClean}`}
             id="mobile-header-call-icon"
@@ -141,8 +140,8 @@ export const Header = () => {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '38px',
-              height: '38px',
+              width: '40px',
+              height: '40px',
               borderRadius: '8px',
               background: 'rgba(16, 185, 129, 0.15)',
               border: '1px solid rgba(16, 185, 129, 0.3)',
@@ -186,7 +185,7 @@ export const Header = () => {
           gap: '1rem',
           animation: 'slideUp 0.2s ease-out'
         }}>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
@@ -194,11 +193,12 @@ export const Header = () => {
                   onClick={handleNavClick}
                   style={{
                     display: 'block',
-                    padding: '0.6rem 0',
+                    padding: '0.75rem 0',
                     fontSize: '1.05rem',
                     fontWeight: 600,
                     color: '#e2e8f0',
-                    borderBottom: '1px solid rgba(255,255,255,0.05)'
+                    borderBottom: '1px solid rgba(255,255,255,0.05)',
+                    minHeight: '44px'
                   }}
                 >
                   {link.label}
@@ -232,8 +232,16 @@ export const Header = () => {
         </div>
       )}
 
-      {/* Inline styles for responsive media queries without tailwind */}
+      {/* Inline styles for responsive media queries */}
       <style>{`
+        .header-subtext {
+          display: block;
+        }
+        @media (max-width: 420px) {
+          .header-subtext {
+            display: none;
+          }
+        }
         @media (min-width: 960px) {
           .desktop-nav { display: flex !important; }
           .desktop-ctas { display: flex !important; }
@@ -248,3 +256,4 @@ export const Header = () => {
     </header>
   );
 };
+

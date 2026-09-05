@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   AlertTriangle, 
   Volume2, 
@@ -15,6 +15,16 @@ import { useBusiness } from '../context/BusinessContext';
 export const SymptomChecker = () => {
   const { businessInfo, openQuoteModal } = useBusiness();
   const [activeSymptomIndex, setActiveSymptomIndex] = useState(0);
+  const detailCardRef = useRef(null);
+
+  const handleSelectSymptom = (idx) => {
+    setActiveSymptomIndex(idx);
+    if (window.innerWidth < 768 && detailCardRef.current) {
+      setTimeout(() => {
+        detailCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+  };
 
   const symptoms = [
     {
@@ -96,8 +106,8 @@ export const SymptomChecker = () => {
         {/* Interactive Layout: Left list of buttons, Right diagnostic card */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.5rem',
           alignItems: 'stretch'
         }}>
           {/* Left Column: Symptom Selectors */}
@@ -109,12 +119,12 @@ export const SymptomChecker = () => {
               return (
                 <button
                   key={symptom.id}
-                  onClick={() => setActiveSymptomIndex(idx)}
+                  onClick={() => handleSelectSymptom(idx)}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '1.15rem 1.35rem',
+                    padding: '0.95rem 1.15rem',
                     borderRadius: '12px',
                     background: isSelected 
                       ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)' 
@@ -124,34 +134,37 @@ export const SymptomChecker = () => {
                     cursor: 'pointer',
                     textAlign: 'left',
                     transition: 'all 0.2s ease',
-                    boxShadow: isSelected ? '0 8px 24px rgba(245, 158, 11, 0.2)' : 'none'
+                    boxShadow: isSelected ? '0 8px 24px rgba(245, 158, 11, 0.2)' : 'none',
+                    minHeight: '52px'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <div style={{
-                      width: '38px',
-                      height: '38px',
+                      width: '36px',
+                      height: '36px',
                       borderRadius: '8px',
                       backgroundColor: isSelected ? 'rgba(245, 158, 11, 0.2)' : 'rgba(255, 255, 255, 0.05)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: isSelected ? '#f59e0b' : '#94a3b8'
+                      color: isSelected ? '#f59e0b' : '#94a3b8',
+                      flexShrink: 0
                     }}>
-                      <Icon size={20} />
+                      <Icon size={19} />
                     </div>
                     <div>
                       <span style={{
                         display: 'block',
                         fontWeight: 700,
-                        fontSize: '0.975rem',
-                        color: isSelected ? '#ffffff' : '#cbd5e1'
+                        fontSize: '0.9rem',
+                        color: isSelected ? '#ffffff' : '#cbd5e1',
+                        lineHeight: 1.25
                       }}>
                         {symptom.shortTitle}
                       </span>
                       <span style={{
                         display: 'inline-block',
-                        fontSize: '0.725rem',
+                        fontSize: '0.7rem',
                         fontWeight: 600,
                         color: symptom.urgencyColor,
                         textTransform: 'uppercase',
@@ -162,18 +175,18 @@ export const SymptomChecker = () => {
                     </div>
                   </div>
 
-                  <ArrowRight size={18} color={isSelected ? '#f59e0b' : '#64748b'} />
+                  <ArrowRight size={17} color={isSelected ? '#f59e0b' : '#64748b'} style={{ flexShrink: 0, marginLeft: '0.5rem' }} />
                 </button>
               );
             })}
           </div>
 
           {/* Right Column: Diagnostic & Solution Card */}
-          <div className="card-glass" style={{
+          <div ref={detailCardRef} className="card-glass" style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            padding: '2.25rem',
+            padding: '1.75rem',
             border: '1px solid rgba(245, 158, 11, 0.25)',
             background: 'linear-gradient(135deg, rgba(19, 28, 46, 0.95) 0%, rgba(12, 17, 29, 0.98) 100%)'
           }}>
@@ -184,26 +197,26 @@ export const SymptomChecker = () => {
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
                 gap: '0.5rem',
-                marginBottom: '1.25rem'
+                marginBottom: '1rem'
               }}>
                 <span style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.4rem',
-                  fontSize: '0.75rem',
+                  fontSize: '0.725rem',
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
                   background: 'rgba(245, 158, 11, 0.15)',
                   color: '#f59e0b',
-                  padding: '0.35rem 0.75rem',
+                  padding: '0.3rem 0.65rem',
                   borderRadius: '6px'
                 }}>
                   <ShieldAlert size={14} /> Diagnostic Insight
                 </span>
 
                 <span style={{
-                  fontSize: '0.8rem',
+                  fontSize: '0.775rem',
                   fontWeight: 700,
                   color: currentSymptom.urgencyColor
                 }}>
@@ -211,7 +224,7 @@ export const SymptomChecker = () => {
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#ffffff', marginBottom: '1rem', lineHeight: 1.25 }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.875rem', lineHeight: 1.25 }}>
                 {currentSymptom.shortTitle}
               </h3>
 
@@ -219,34 +232,34 @@ export const SymptomChecker = () => {
               <div style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.04)',
                 borderLeft: '3px solid #64748b',
-                padding: '0.85rem 1rem',
+                padding: '0.75rem 0.9rem',
                 borderRadius: '0 8px 8px 0',
-                marginBottom: '1.25rem'
+                marginBottom: '1rem'
               }}>
-                <span style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 700, marginBottom: '0.2rem' }}>
+                <span style={{ display: 'block', fontSize: '0.7rem', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 700, marginBottom: '0.2rem' }}>
                   What you notice:
                 </span>
-                <p style={{ color: '#e2e8f0', fontSize: '0.9rem', fontStyle: 'italic', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ color: '#e2e8f0', fontSize: '0.875rem', fontStyle: 'italic', margin: 0, lineHeight: 1.45 }}>
                   {currentSymptom.driverComplaint}
                 </p>
               </div>
 
               {/* What is likely causing it */}
-              <div style={{ marginBottom: '1.25rem' }}>
-                <h4 style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', color: '#f59e0b', letterSpacing: '0.04em', marginBottom: '0.4rem' }}>
+              <div style={{ marginBottom: '1rem' }}>
+                <h4 style={{ fontSize: '0.825rem', fontWeight: 700, textTransform: 'uppercase', color: '#f59e0b', letterSpacing: '0.04em', marginBottom: '0.3rem' }}>
                   Likely Cause:
                 </h4>
-                <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: 1.55 }}>
+                <p style={{ color: '#cbd5e1', fontSize: '0.875rem', lineHeight: 1.5 }}>
                   {currentSymptom.likelyCause}
                 </p>
               </div>
 
               {/* How our team fixes it */}
-              <div style={{ marginBottom: '1.75rem' }}>
-                <h4 style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', color: '#34d399', letterSpacing: '0.04em', marginBottom: '0.4rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h4 style={{ fontSize: '0.825rem', fontWeight: 700, textTransform: 'uppercase', color: '#34d399', letterSpacing: '0.04em', marginBottom: '0.3rem' }}>
                   How {businessInfo.name} Solves It:
                 </h4>
-                <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: 1.55 }}>
+                <p style={{ color: '#cbd5e1', fontSize: '0.875rem', lineHeight: 1.5 }}>
                   {currentSymptom.ourSolution}
                 </p>
               </div>
@@ -254,30 +267,30 @@ export const SymptomChecker = () => {
 
             {/* Direct Action */}
             <div style={{
-              paddingTop: '1.5rem',
+              paddingTop: '1.25rem',
               borderTop: '1px solid rgba(255, 255, 255, 0.08)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
-              gap: '1rem'
+              gap: '0.875rem'
             }}>
               <div>
-                <span style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>
+                <span style={{ display: 'block', fontSize: '0.725rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>
                   Recommended Service
                 </span>
-                <strong style={{ fontSize: '0.95rem', color: '#ffffff' }}>
+                <strong style={{ fontSize: '0.9rem', color: '#ffffff' }}>
                   {currentSymptom.recommendedService}
                 </strong>
               </div>
 
               <button
                 onClick={() => openQuoteModal(currentSymptom.recommendedService)}
-                className="btn btn-primary"
-                style={{ padding: '0.75rem 1.4rem' }}
+                className="btn btn-primary mobile-btn-full"
+                style={{ padding: '0.7rem 1.25rem', fontSize: '0.875rem' }}
               >
                 <Calendar size={16} />
-                <span>Get Free Diagnostic Quote</span>
+                <span>Get Free Quote</span>
               </button>
             </div>
           </div>
@@ -287,3 +300,4 @@ export const SymptomChecker = () => {
     </section>
   );
 };
+

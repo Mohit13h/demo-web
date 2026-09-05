@@ -118,24 +118,24 @@ export const QuoteModal = () => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {/* Vehicle Row */}
               <div style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '10px',
-                padding: '1rem'
+                padding: '0.85rem'
               }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', fontWeight: 700, color: '#e2e8f0', marginBottom: '0.65rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.775rem', fontWeight: 700, color: '#e2e8f0', marginBottom: '0.5rem' }}>
                   <Car size={15} color="#f59e0b" />
                   <span>Vehicle Information</span>
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', gap: '0.6rem' }}>
+                <div className="modal-vehicle-grid">
                   <div>
                     <input
                       type="text"
                       name="vehicleYear"
-                      placeholder="Year"
+                      placeholder="Year (e.g. 2020)"
                       required
                       value={formData.vehicleYear}
                       onChange={handleChange}
@@ -154,7 +154,7 @@ export const QuoteModal = () => {
                     <input
                       type="text"
                       name="vehicleMake"
-                      placeholder="Make (e.g. Ford, Toyota)"
+                      placeholder="Make (e.g. Toyota)"
                       required
                       value={formData.vehicleMake}
                       onChange={handleChange}
@@ -173,7 +173,7 @@ export const QuoteModal = () => {
                     <input
                       type="text"
                       name="vehicleModel"
-                      placeholder="Model (e.g. F-150, Camry)"
+                      placeholder="Model (e.g. Camry)"
                       required
                       value={formData.vehicleModel}
                       onChange={handleChange}
@@ -192,9 +192,9 @@ export const QuoteModal = () => {
               </div>
 
               {/* Service & Preferred Date */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '0.75rem' }}>
+              <div className="modal-two-col">
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Service Needed
                   </label>
                   <select
@@ -208,7 +208,7 @@ export const QuoteModal = () => {
                       border: '1px solid rgba(255, 255, 255, 0.15)',
                       borderRadius: '6px',
                       color: '#ffffff',
-                      fontSize: '0.875rem'
+                      fontSize: '0.85rem'
                     }}
                   >
                     {serviceOptions.map((svc) => (
@@ -220,7 +220,7 @@ export const QuoteModal = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Preferred Date
                   </label>
                   <input
@@ -235,16 +235,16 @@ export const QuoteModal = () => {
                       border: '1px solid rgba(255, 255, 255, 0.15)',
                       borderRadius: '6px',
                       color: '#ffffff',
-                      fontSize: '0.875rem'
+                      fontSize: '0.85rem'
                     }}
                   />
                 </div>
               </div>
 
               {/* Contact Information */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+              <div className="modal-two-col">
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Your Full Name *
                   </label>
                   <input
@@ -267,7 +267,7 @@ export const QuoteModal = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                     Phone Number (for quote) *
                   </label>
                   <input
@@ -292,7 +292,7 @@ export const QuoteModal = () => {
 
               {/* Email */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
                   Email Address (optional)
                 </label>
                 <input
@@ -315,13 +315,13 @@ export const QuoteModal = () => {
 
               {/* Message / Symptoms */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Describe what your vehicle is experiencing (optional)
+                <label style={{ display: 'block', fontSize: '0.775rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  Describe vehicle issue / warning lights (optional)
                 </label>
                 <textarea
                   name="message"
                   rows="2"
-                  placeholder="e.g. Squeaking noise when braking from high speeds, check engine light came on 2 days ago..."
+                  placeholder="e.g. Squeaking noise when braking from high speeds..."
                   value={formData.message}
                   onChange={handleChange}
                   style={{
@@ -331,7 +331,7 @@ export const QuoteModal = () => {
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: '6px',
                     color: '#ffffff',
-                    fontSize: '0.875rem',
+                    fontSize: '0.85rem',
                     resize: 'vertical'
                   }}
                 />
@@ -343,7 +343,7 @@ export const QuoteModal = () => {
                 id="submit-quote-btn"
                 disabled={isSubmitting}
                 className="btn btn-primary"
-                style={{ width: '100%', padding: '0.9rem', fontSize: '1rem', marginTop: '0.5rem' }}
+                style={{ width: '100%', padding: '0.875rem', fontSize: '0.975rem', marginTop: '0.35rem' }}
               >
                 {isSubmitting ? (
                   <span>Processing Your Request...</span>
@@ -355,17 +355,38 @@ export const QuoteModal = () => {
                 )}
               </button>
 
-              <div style={{ textAlign: 'center', fontSize: '0.75rem', color: '#64748b' }}>
+              <div style={{ textAlign: 'center', fontSize: '0.725rem', color: '#64748b' }}>
                 🔒 Your information is confidential. We never spam or sell client data.
               </div>
             </form>
+
+            <style>{`
+              .modal-vehicle-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr 1.5fr;
+                gap: 0.5rem;
+              }
+              .modal-two-col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.65rem;
+              }
+              @media (max-width: 540px) {
+                .modal-vehicle-grid {
+                  grid-template-columns: 1fr;
+                }
+                .modal-two-col {
+                  grid-template-columns: 1fr;
+                }
+              }
+            `}</style>
           </div>
         ) : (
           /* Realistic Success State */
-          <div style={{ textAlign: 'center', padding: '1.5rem 0.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '1.25rem 0.5rem' }}>
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '56px',
+              height: '56px',
               borderRadius: '50%',
               backgroundColor: 'rgba(16, 185, 129, 0.15)',
               border: '2px solid #10b981',
@@ -373,16 +394,16 @@ export const QuoteModal = () => {
               alignItems: 'center',
               justifyContent: 'center',
               color: '#10b981',
-              margin: '0 auto 1.25rem'
+              margin: '0 auto 1rem'
             }}>
-              <CheckCircle2 size={36} />
+              <CheckCircle2 size={32} />
             </div>
 
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem' }}>
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.35rem' }}>
               Estimate Request Received!
             </h3>
             
-            <p style={{ color: '#cbd5e1', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem', maxWidth: '440px', margin: '0 auto 1.5rem auto' }}>
+            <p style={{ color: '#cbd5e1', fontSize: '0.875rem', lineHeight: 1.55, marginBottom: '1.25rem', maxWidth: '440px', margin: '0 auto 1.25rem auto' }}>
               Thank you, <strong>{formData.name || 'valued customer'}</strong>. Our service advisor at <strong>{businessInfo.name}</strong> has received your vehicle details and will reach out shortly.
             </p>
 
@@ -390,17 +411,17 @@ export const QuoteModal = () => {
               backgroundColor: 'rgba(255, 255, 255, 0.04)',
               border: '1px solid rgba(255, 255, 255, 0.08)',
               borderRadius: '10px',
-              padding: '1rem',
+              padding: '0.875rem',
               maxWidth: '440px',
-              margin: '0 auto 1.5rem auto',
+              margin: '0 auto 1.25rem auto',
               textAlign: 'left',
-              fontSize: '0.85rem'
+              fontSize: '0.825rem'
             }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
                 <span style={{ color: '#94a3b8' }}>Vehicle:</span>
                 <span style={{ color: '#ffffff', fontWeight: 600 }}>{formData.vehicleYear} {formData.vehicleMake} {formData.vehicleModel || 'Vehicle'}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
                 <span style={{ color: '#94a3b8' }}>Service:</span>
                 <span style={{ color: '#f59e0b', fontWeight: 600 }}>{formData.serviceNeeded}</span>
               </div>
@@ -410,14 +431,14 @@ export const QuoteModal = () => {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '320px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', maxWidth: '320px', margin: '0 auto' }}>
               <a
                 href={`tel:${businessInfo.phoneClean}`}
                 className="btn btn-call"
                 style={{ width: '100%', justifyContent: 'center' }}
               >
                 <Phone size={16} />
-                <span>Need faster service? Call {businessInfo.phone}</span>
+                <span>Call {businessInfo.phone}</span>
               </a>
 
               <button
@@ -434,3 +455,4 @@ export const QuoteModal = () => {
     </div>
   );
 };
+
